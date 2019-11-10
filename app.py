@@ -12,7 +12,7 @@ app = Flask(__name__)
 bootstrap = Bootstrap(app)
 
 app.config['SECRET_KEY'] = 'un string que funcione como llave'
-
+app.config['BOOTSTRAP_SERVE_LOCAL'] = True
 
 @app.route('/')
 def index():
@@ -93,6 +93,22 @@ def logout():
         return render_template('logged_out.html')
     else:
         return redirect(url_for('index'))
+
+################################ VER CSV ###############################
+@app.route('/vercsv', methods=['GET'])
+def vercsv():
+    with open('clientes.csv', 'r', encoding='utf-8') as archivo:
+      reader = csv.reader(archivo)
+      vercontenido = list(reader)
+      return render_template("vercsv.html", tabla=vercontenido)
+#########################################################################    
+
+    
+################################ Autor #################################    
+@app.route('/Sobre', methods=['GET'])
+def autor():
+    return render_template("Sobre.html")
+################################ Autor #################################
 
 
 if __name__ == "__main__":

@@ -1,0 +1,25 @@
+{% extends "ingresado.html" %}
+
+{% block title %}Ver CSV{% endblock %}
+
+{% block page_content %}
+
+<!-- Muestro el contenido del CSV -->
+<h1><u>LISTADO DE CLIENTES</u></h1>
+<h2> </h2>
+
+<table style="width:100%">
+	{% for item in tabla %}
+    <tr>
+    {% for datos in item %}
+		<td>{{ datos }}</td>
+    		{% endfor %}
+    	</tr>
+    {% endfor %}
+</table>
+<!--FIN -->
+
+</body>
+</html>
+
+{% endblock %}
